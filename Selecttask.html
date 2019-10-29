@@ -1,0 +1,71 @@
+<html>
+    <head> 
+<script>
+    //citiesByState is an object array for each state 
+var citiesByState = {
+MadhyaPradesh:["Jabalpur", "Bhopal", "Indore"],
+Gujrat:["Ahemdabad", "Gandhinagar", "Surat", "Baroda"],    
+Odisha: ["Bhubaneswar","Puri","Cuttack"],
+Maharashtra: ["Mumbai","Pune","Nagpur"],
+Kerala: ["kochi","Kanpur"],
+Telangana:["Hyderabad", "Warangal", "Nizambad"]
+}
+//Everytime when page load resetSelection page loads
+//It set the index of select menu=0
+/*The selectedIndex property sets or returns the index of the selected option in a drop-down list.
+
+The index starts at 0.
+
+Note: If the drop-down list allows multiple selections it will only return the index of the first option selected.
+
+Note: The value "-1" will deselect all options (if any).
+
+Note: If no option is selected, the selectedIndex property will return -1.*/
+function resetSelection(){
+    document.getElementById("StateSelect").selectIndex=0;
+    document.getElementById("citySelect").selectIndex=0;
+}
+//makeSubmenu function create a city menu according to value of state selected. 
+function makeSubmenu(value){
+    //if no value is selected then display nothing
+    if(value.length==0) document.getElementById("citySelect").innerHTML = "<option></option>";
+    else {
+        //else create an empty string
+            var citiesOptions = "";
+            // cityid  in citiesyState array according to state selected 
+            for(cityId in citiesByState[value]) {
+                //Create citiesOption  and diplay in <options> </option> tag with value.
+            citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+}
+//Display all citiesOptions accordingly
+document.getElementById("citySelect").innerHTML = citiesOptions;
+}
+}
+</script>
+    </head>
+    <!--onload event:Exceute the java script code as soon as the page loaded.-->
+    <body onload="resetSelection()">
+        <h2> Fill Following Details </h2>
+        Name:<input type="text"><br><br>
+        Last Name:<input type="text"><br><br>
+        Mobile Number:<input type="text"><br><br>
+        <!-- onchange event method : call the function as per selcetion value> it is used with select menu-->
+       State: <select id="StateSelect" size="1" onchange="makeSubmenu(this.value)">
+            <!-- First option is choose state and it is disabled -->
+        <option value="" disabled selected>Choose State</option>
+        <option>MadhyaPradesh</option>
+        <option>Gujrat</option>
+        <option>Odisha</option>
+        <option>Maharashtra</option>
+        <option>Kerala</option>
+        <option>Telangana</option>
+
+        </select>
+        <!--City menu is created with empty option. Options will be loaded as state will be selected.-->
+       City: <select id="citySelect" size="1" >
+        <option value="" disabled selected>Choose City</option>
+        <option></option>
+        </select><br><br>
+        <input type="button" value="Submit">
+    </body>
+</html>
