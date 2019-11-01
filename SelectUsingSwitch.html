@@ -1,0 +1,46 @@
+<html>
+  <head>
+ 
+ 
+  </head>
+  <body>
+    
+     <form>
+       State:<select id="state" onchange="choice(this.value)">
+        <option value=" " disabled selected> Choose State</option>
+        <option value="TS">Telangana</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="AP">Andhra Pradesh</option>
+       </select>
+       City: <select id="city">
+           <option value=" " disabled selected>Choose City</option>
+       </select>
+ 
+     </form>
+ 
+       <script>
+       
+       function choice(value){
+         event.preventDefault();
+         document.getElementById("city").options.length=0;
+         switch(value){
+           case "TS":
+           document.getElementById("city").options[0]= new Option("Hyderabad","Hyderabad");
+           document.getElementById("city").options[1]= new Option("Warangal","Warangal");
+           break;
+
+           case "Karnataka": 
+           document.getElementById("city").options[0]= new Option("Bengluru","Bengluru");
+           document.getElementById("city").options[1]= new Option("Manglore","Manglore"); 
+           break;
+
+           case "AP": 
+           document.getElementById("city").options[0]= new Option("Vijyawada","Vijaywada");
+           document.getElementById("city").options[1]= new Option("Guntur","Guntur"); 
+           break;
+         }
+       }
+       </script>
+ 
+  </body>
+</html>
